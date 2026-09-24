@@ -315,3 +315,14 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
   .upgradeCard{min-height:132px}
   #upgrade .panel{padding:22px}
 }
+
+/* Language selector + guaranteed wave spacing */
+.languageSwitch{display:flex;gap:7px;padding:4px;border-radius:14px;background:#07151a;border:1px solid rgba(255,255,255,.08)}
+.languageSwitch button{min-width:92px;padding:9px 13px;border:0;border-radius:10px;background:transparent;color:#91a6ad;font-size:12px;font-weight:900;cursor:pointer;transition:.14s}
+.languageSwitch button:hover{color:#fff;background:rgba(255,255,255,.05)}
+.languageSwitch button.active{color:#10200c;background:linear-gradient(180deg,#e9ff8b,#b9ef56);box-shadow:0 4px 14px rgba(185,239,86,.14)}
+.settingsNote{display:none!important}
+#wavePill{white-space:nowrap!important;word-spacing:.16em!important;letter-spacing:.08em!important}
+#waveText{display:block;white-space:pre!important}
+.titleTop{color:#fff!important;text-shadow:inherit!important}
+@media(max-width:620px){.languageSwitch{width:100%}.languageSwitch button{flex:1}}
