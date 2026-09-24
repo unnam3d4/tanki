@@ -3,54 +3,93 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="theme-color" content="#09151c">
+<meta name="theme-color" content="#08161d">
 <meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <title>Танки: Защити Базу!</title>
 <link rel="stylesheet" href="./src/styles.css">
-<script src="./src/platform.js" defer></script>\n<script src="./src/audio.js" defer></script>
+<script src="./src/platform.js" defer></script>
+<script src="./src/audio.js" defer></script>
+<script src="./src/i18n.js" defer></script>
 <script src="./src/game.js" defer></script>
 </head>
 <body>
 <div id="app"><div id="stage"><canvas id="game" width="1280" height="720"></canvas>
 
 <section id="menu" class="screen active"><div class="panel hero premiumHero">
-  <div class="eyebrow">ARCADE DEFENSE</div>
+  <div class="brandMark"><span class="brandLine"></span><div class="eyebrow" data-i18n="menu.kicker">ARCADE DEFENSE</div><span class="brandLine"></span></div>
   <h1>ТАНКИ:<br><span>ЗАЩИТИ БАЗУ!</span></h1>
-  <p>Короткие волны, понятный бой и усиления после каждой атаки. Никакой перегруженности — сразу в игру.</p>
+  <p data-i18n="menu.lead">Удержи базу, разбей волны врагов и усиливай танк после каждого рубежа.</p>
   <div class="menuBtns menuGrid">
-    <button id="play" class="primary">ИГРАТЬ</button>
-    <button id="quick" class="secondary">БЫСТРЫЙ СТАРТ</button>
-    <button id="settingsBtn" class="ghost">НАСТРОЙКИ</button>
-    <button id="help" class="ghost">КАК ИГРАТЬ</button>
+    <button id="play" class="primary" data-i18n="play">ИГРАТЬ</button>
+    <button id="quick" class="secondary" data-i18n="quick">БЫСТРЫЙ СТАРТ</button>
+    <button id="settingsBtn" class="ghost" data-i18n="settings">НАСТРОЙКИ</button>
+    <button id="help" class="ghost" data-i18n="how">КАК ИГРАТЬ</button>
   </div>
+  <div class="menuFooter"><span class="statusDot"></span><span>Yandex Games Ready</span><span class="menuSep"></span><span>v0.6</span></div>
 </div></section>
 
-<section id="levels" class="screen"><div class="panel wide">
- <div class="headRow"><div><div class="eyebrow">КАРТА БОЯ</div><h2>Выбери сектор</h2></div><button id="back" class="ghost">← Меню</button></div>
+<section id="levels" class="screen"><div class="panel wide premiumPanel">
+ <div class="headRow"><div><div class="eyebrow" data-i18n="levels.kicker">КАРТА БОЯ</div><h2 data-i18n="levels.title">Выбери сектор</h2></div><button id="back" class="ghost" data-i18n="back">← НАЗАД</button></div>
  <div id="levelGrid" class="levelGrid"></div>
- <div class="difficulty"><div><b>Сложность</b><span>Начни с лёгкой — она рассчитана на первый заход.</span></div><div class="diffs"><button data-diff="easy" class="chip active">Легко</button><button data-diff="normal" class="chip">Норма</button><button data-diff="hard" class="chip">Сложно</button></div><button id="launch" class="primary">В БОЙ</button></div>
+ <div class="difficulty premiumStrip"><div><b data-i18n="difficulty">Сложность</b><span data-i18n="difficulty.hint">Для первого прохождения рекомендуем лёгкий режим.</span></div><div class="diffs"><button data-diff="easy" class="chip active" data-i18n="easy">ЛЕГКО</button><button data-diff="normal" class="chip" data-i18n="normal">НОРМА</button><button data-diff="hard" class="chip" data-i18n="hard">СЛОЖНО</button></div><button id="launch" class="primary" data-i18n="fight">В БОЙ</button></div>
 </div></section>
 
-<section id="helpScreen" class="screen"><div class="panel small"><div class="eyebrow">КАК ИГРАТЬ</div><h2>Всё просто</h2><div class="helpGrid"><div><b>WASD / стрелки</b><span>движение</span></div><div><b>Мышь / касание</b><span>прицел</span></div><div><b>ЛКМ / Space</b><span>огонь</span></div></div><p>Уничтожай врагов раньше, чем они доберутся до базы. После каждой волны выбери одно из трёх усилений.</p><button id="helpBack" class="primary">ПОНЯТНО</button></div></section>
+<section id="helpScreen" class="screen"><div class="panel small premiumPanel">
+ <div class="eyebrow" data-i18n="help.kicker">УПРАВЛЕНИЕ</div><h2 data-i18n="help.title">Защищай центральную базу</h2>
+ <div class="helpGrid">
+  <div><b>WASD</b><span data-i18n="help.move">ДВИЖЕНИЕ</span></div>
+  <div><b>MOUSE</b><span data-i18n="help.aim">ПРИЦЕЛ</span></div>
+  <div><b>LMB / SPACE</b><span data-i18n="help.fire">ОГОНЬ</span></div>
+ </div>
+ <p class="muted" data-i18n="help.desc">Уничтожай врагов до того, как они разрушат базу. После каждой волны выбери одно усиление.</p>
+ <button id="helpBack" class="primary" data-i18n="ok">ПОНЯТНО</button>
+</div></section>
 
-<section id="pause" class="screen"><div class="panel small center"><div class="eyebrow">ПАУЗА</div><h2>Бой остановлен</h2><div class="menuBtns"><button id="resume" class="primary">ПРОДОЛЖИТЬ</button><button id="pauseSettings" class="secondary">НАСТРОЙКИ</button><button id="restart" class="secondary">ЗАНОВО</button><button id="quit" class="ghost">В МЕНЮ</button></div></div></section>
+<section id="pause" class="screen"><div class="panel small center premiumPanel">
+ <div class="eyebrow" data-i18n="pause.kicker">ПАУЗА</div><h2 data-i18n="pause.title">Бой остановлен</h2>
+ <div class="menuBtns"><button id="resume" class="primary" data-i18n="resume">ПРОДОЛЖИТЬ</button><button id="pauseSettings" class="secondary" data-i18n="settings">НАСТРОЙКИ</button><button id="restart" class="secondary" data-i18n="restart">ЗАНОВО</button><button id="quit" class="ghost" data-i18n="menu">В МЕНЮ</button></div>
+</div></section>
 
-<section id="settings" class="screen"><div class="panel settingsPanel">
-  <div class="headRow"><div><div class="eyebrow">НАСТРОЙКИ</div><h2>Комфорт игры</h2></div><button id="settingsBack" class="ghost">← НАЗАД</button></div>
+<section id="settings" class="screen"><div class="panel settingsPanel premiumPanel">
+  <div class="headRow"><div><div class="eyebrow" data-i18n="settings.kicker">НАСТРОЙКИ</div><h2 data-i18n="settings.title">Комфорт игры</h2></div><button id="settingsBack" class="ghost" data-i18n="back">← НАЗАД</button></div>
   <div class="settingsList">
-    <div class="settingRow"><div><b>Громкость</b><span>Общая громкость звуков игры.</span></div><input id="volumeRange" type="range" min="0" max="100" value="65"></div>
-    <div class="settingRow"><div><b>Звуковые эффекты</b><span>Выстрелы, взрывы и сигналы интерфейса.</span></div><button id="sfxToggle" class="toggle active">ВКЛЮЧЕНО</button></div>
-    <div class="settingRow"><div><b>Тряска экрана</b><span>По умолчанию выключена. Можно включить вручную.</span></div><button id="shakeToggle" class="toggle">ВЫКЛЮЧЕНО</button></div>
-    <div class="settingRow"><div><b>Автопауза</b><span>Останавливает бой при потере фокуса вкладки.</span></div><button id="autopauseToggle" class="toggle active">ВКЛЮЧЕНО</button></div>
+    <div class="settingRow"><div class="settingCopy"><b data-i18n="volume">Громкость</b><span data-i18n="volume.desc">Общая громкость звуков игры.</span></div><div class="rangeWrap"><input id="volumeRange" type="range" min="0" max="100" value="65"><output id="volumeValue">65%</output></div></div>
+    <div class="settingRow"><div class="settingCopy"><b data-i18n="sfx">Звуковые эффекты</b><span data-i18n="sfx.desc">Выстрелы, взрывы и сигналы интерфейса.</span></div><button id="sfxToggle" class="toggle active">ВКЛЮЧЕНО</button></div>
+    <div class="settingRow"><div class="settingCopy"><b data-i18n="shake">Тряска экрана</b><span data-i18n="shake.desc">По умолчанию выключена для комфортной игры.</span></div><button id="shakeToggle" class="toggle">ВЫКЛЮЧЕНО</button></div>
+    <div class="settingRow"><div class="settingCopy"><b data-i18n="autopause">Автопауза</b><span data-i18n="autopause.desc">Останавливает игру и звук при потере фокуса.</span></div><button id="autopauseToggle" class="toggle active">ВКЛЮЧЕНО</button></div>
   </div>
-  <p class="settingsNote">Настройки сохраняются на устройстве. Звук останавливается при потере фокуса.</p>
+  <p class="settingsNote" data-i18n="settings.note">Настройки сохраняются на устройстве. Прогресс игры дополнительно синхронизируется через Яндекс Игры, когда Player API доступен.</p>
 </div></section>
 
-<section id="upgrade" class="screen"><div class="panel wide center"><div class="eyebrow">УСИЛЕНИЕ</div><h2>Выбери одно улучшение</h2><p class="muted">Чистые игровые карточки без эмодзи — только понятные параметры.</p><div id="upgradeGrid" class="upgradeGrid"></div></div></section>
+<section id="upgrade" class="screen"><div class="panel wide center premiumPanel">
+ <div class="eyebrow" data-i18n="upgrade.kicker">УСИЛЕНИЕ</div><h2 data-i18n="upgrade.title">Выбери одно улучшение</h2><p class="muted" data-i18n="upgrade.desc">Одно решение перед следующей волной.</p><div id="upgradeGrid" class="upgradeGrid"></div>
+</div></section>
 
-<section id="result" class="screen"><div class="panel small center"><div class="eyebrow">РЕЗУЛЬТАТ</div><h2 id="resultTitle">ПОБЕДА!</h2><p id="resultText" class="muted"></p><div class="stats"><div><b id="rScore">0</b><span>очки</span></div><div><b id="rWave">0</b><span>волна</span></div><div><b id="rBase">0%</b><span>база</span></div></div><div class="menuBtns"><button id="next" class="primary">СЛЕДУЮЩИЙ УРОВЕНЬ</button><button id="retry" class="secondary">ЕЩЁ РАЗ</button><button id="resultMenu" class="ghost">К КАРТЕ</button></div></div></section>
+<section id="result" class="screen"><div class="panel small center premiumPanel">
+ <div class="eyebrow" data-i18n="result.kicker">РЕЗУЛЬТАТ</div><h2 id="resultTitle">ПОБЕДА!</h2><p id="resultText" class="muted"></p>
+ <div class="stats"><div><b id="rScore">0</b><span data-i18n="points">ОЧКИ</span></div><div><b id="rWave">0</b><span data-i18n="wave">ВОЛНА</span></div><div><b id="rBase">0%</b><span data-i18n="base">БАЗА</span></div></div>
+ <div class="menuBtns"><button id="next" class="primary" data-i18n="next">СЛЕДУЮЩИЙ УРОВЕНЬ</button><button id="retry" class="secondary" data-i18n="retry">ЕЩЁ РАЗ</button><button id="resultMenu" class="ghost" data-i18n="map">К КАРТЕ</button></div>
+</div></section>
 
-<div id="hud"><div class="leftHud"><div class="hudBox"><span>БАЗА</span><b><i id="baseHp">100</i>%</b><div class="bar"><u id="baseBar"></u></div></div><div class="hudBox"><span>ТАНК</span><b><i id="tankHp">100</i>%</b><div class="bar blue"><u id="tankBar"></u></div></div></div><div id="wavePill">ВОЛНА <b id="wave">1</b>/<b id="maxWave">3</b></div><div class="rightHud"><div class="hudBox right"><span>ОЧКИ</span><b id="score">0</b></div><div class="hudBox right"><span>ЦЕЛЕЙ</span><b id="remain">0</b></div></div><div id="toast"></div><div id="comboPill"></div><button id="pauseBtn">Ⅱ</button></div>
+<div id="hud">
+ <div class="leftHud vitals">
+  <div class="vitalCard baseVital">
+   <div class="vitalHead"><div class="vitalName"><span class="vitalIcon baseIcon"></span><span data-i18n="base">БАЗА</span></div><b><i id="baseHp">100</i><small>/100</small></b></div>
+   <div class="premiumBar baseBar"><u id="baseBar"></u><span class="ticks"></span></div>
+  </div>
+  <div class="vitalCard tankVital">
+   <div class="vitalHead"><div class="vitalName"><span class="vitalIcon tankIcon"></span><span data-i18n="tank">ТАНК</span></div><b><i id="tankHp">100</i><small>/100</small></b></div>
+   <div class="premiumBar tankBar"><u id="tankBar"></u><span class="ticks"></span></div>
+  </div>
+ </div>
+ <div id="wavePill"><span class="waveMeta" data-i18n="sector">СЕКТОР</span><strong id="sectorName">Зелёный рубеж</strong><span class="waveCount"><span data-i18n="wave">ВОЛНА</span> <b id="wave">1</b>/<b id="maxWave">3</b></span></div>
+ <div class="rightHud">
+  <div class="metricCard right"><span data-i18n="points">ОЧКИ</span><b id="score">0</b></div>
+  <div class="metricCard right"><span data-i18n="targets">ЦЕЛЕЙ</span><b id="remain">0</b></div>
+ </div>
+ <div id="toast"></div><div id="comboPill"></div><button id="pauseBtn">II</button>
+</div>
 
 <div id="mobile"><div class="pad"><button data-k="ArrowUp">▲</button><button data-k="ArrowLeft">◀</button><button data-k="ArrowRight">▶</button><button data-k="ArrowDown">▼</button></div><button id="fire">ОГОНЬ</button></div>
 </div></div>
