@@ -131,3 +131,9 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 @media(max-width:520px){.levelGrid{grid-template-columns:1fr}.helpGrid,.stats{grid-template-columns:1fr 1fr}}
 @media(hover:none),(pointer:coarse),(max-width:900px){#mobile{display:block}.vitalCard{width:160px;padding:7px 9px}.vitalHead b{font-size:14px}.premiumBar{height:8px}.rightHud .metricCard:nth-child(2){display:none}.metricCard{min-width:82px;padding:8px 9px}#wavePill{top:9px;min-width:158px;padding:6px 10px}.waveMeta{display:none}#wavePill strong{font-size:11px}#pauseBtn{display:none}}
 @media(max-height:480px){.screen{padding:10px}.panel{max-height:96%;padding:18px}.pad{transform:scale(.82);transform-origin:left bottom}#fire{transform:scale(.82);transform-origin:right bottom}.vitalCard{width:150px}}
+
+.vitalCard.warning{border-color:#ffc66538}
+.vitalCard.warning .premiumBar u{background:linear-gradient(90deg,#f19b43,#ffd96d);box-shadow:0 0 14px #ffc35d40}
+.vitalCard.critical{border-color:#ff70574f;box-shadow:0 12px 28px #0004,0 0 0 1px #ff665524 inset}
+.vitalCard.critical .premiumBar u{background:linear-gradient(90deg,#e34c47,#ff7862);box-shadow:0 0 14px #ff655c4f}
+.vitalCard.critical .vitalHead b{color:#ff9b89}
