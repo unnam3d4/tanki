@@ -1,10 +1,10 @@
 (()=>{'use strict';
-let ctx=null,master=null;
+let ctx=null,master=null,enabled=true,volume=.65;
 function ensure(){
   if(!ctx){
     const AC=window.AudioContext||window.webkitAudioContext;
     if(!AC)return null;
-    ctx=new AC(); master=ctx.createGain(); master.gain.value=.22; master.connect(ctx.destination);
+    ctx=new AC(); master=ctx.createGain(); master.gain.value=enabled?volume*.22:0; master.connect(ctx.destination);
   }
   if(ctx.state==='suspended')ctx.resume().catch(()=>{});
   return ctx;
@@ -26,7 +26,12 @@ function noise(dur=.12,vol=.12,cut=1200){
   f.type='lowpass';f.frequency.value=cut;g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
   s.buffer=b;s.connect(f);f.connect(g);g.connect(master);s.start(t);
 }
+function applyGain(){if(master)master.gain.value=enabled?volume*.22:0}
 const api={
+ setEnabled(v){enabled=!!v;applyGain()},
+ setVolume(v){volume=Math.max(0,Math.min(1,Number(v)||0));applyGain()},
+ suspend(){if(ctx&&ctx.state==='running')ctx.suspend().catch(()=>{})},
+ resume(){if(ctx&&ctx.state==='suspended')ctx.resume().catch(()=>{})},
  unlock:ensure,
  click(){tone(620,.035,'square',.08,-80)},
  shoot(){tone(175,.055,'sawtooth',.11,-70);noise(.055,.045,1800)},
