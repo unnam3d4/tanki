@@ -326,3 +326,19 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 #waveText{display:block;white-space:pre!important}
 .titleTop{color:#fff!important;text-shadow:inherit!important}
 @media(max-width:620px){.languageSwitch{width:100%}.languageSwitch button{flex:1}}
+
+/* 30-level campaign */
+#levels .wide{width:min(1080px,96%)}
+#levels .levelGrid{grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+#levels .levelCard{min-height:126px;padding:14px;border-radius:17px}
+#levels .levelCard strong{font-size:17px;line-height:1.15;margin:8px 0 5px}
+#levels .levelCard small{font-size:10px}
+#levels .levelCard.bossLevel{border-color:rgba(255,173,92,.25);background:radial-gradient(circle at 90% 8%,rgba(255,177,91,.10),transparent 38%),linear-gradient(160deg,#ffffff0d,#ffffff03)}
+#levels .levelCard.bossLevel:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,transparent,#ffad63,transparent);opacity:.72}
+.campaignStrip{margin-top:16px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;padding:14px 15px;border-radius:18px;background:linear-gradient(180deg,#0d2027,#08161b);border:1px solid rgba(255,255,255,.08)}
+.campaignProgress{display:grid;gap:2px;min-width:94px}
+.campaignProgress span{font-size:8px;letter-spacing:.16em;color:#81969d;font-weight:1000}
+.campaignProgress b{font-size:18px;color:#eaff8a}
+.campaignHint{text-align:center;color:#91a5ab;font-size:11px;line-height:1.4}
+@media(max-width:900px){#levels .levelGrid{grid-template-columns:repeat(3,1fr)}.campaignStrip{grid-template-columns:1fr auto}.campaignHint{display:none}}
+@media(max-width:620px){#levels .levelGrid{grid-template-columns:repeat(2,1fr)}.campaignStrip{grid-template-columns:1fr}.campaignStrip .primary{width:100%}}
