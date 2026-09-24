@@ -1,0 +1,25 @@
+name: Build Yandex Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm run build:yandex
+      - name: Create Yandex ZIP
+        run: |
+          cd dist
+          zip -r ../tanki-yandex.zip .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tanki-yandex
+          path: tanki-yandex.zip
