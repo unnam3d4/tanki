@@ -31,7 +31,7 @@
 <section id="levels" class="screen"><div class="panel wide premiumPanel">
  <div class="headRow"><div><div class="eyebrow" data-i18n="levels.kicker">КАРТА БОЯ</div><h2 data-i18n="levels.title">Выбери сектор</h2></div><button id="back" class="ghost" data-i18n="back">← НАЗАД</button></div>
  <div id="levelGrid" class="levelGrid"></div>
- <div class="difficulty premiumStrip"><div><b data-i18n="difficulty">Сложность</b><span data-i18n="difficulty.hint">Для первого прохождения рекомендуем лёгкий режим.</span></div><div class="diffs"><button data-diff="easy" class="chip active" data-i18n="easy">ЛЕГКО</button><button data-diff="normal" class="chip" data-i18n="normal">НОРМА</button><button data-diff="hard" class="chip" data-i18n="hard">СЛОЖНО</button></div><button id="launch" class="primary" data-i18n="fight">В БОЙ</button></div>
+ <div class="campaignStrip"><div class="campaignProgress"><span data-i18n="campaign.progress">ПРОГРЕСС</span><b id="campaignProgress">1 / 30</b></div><div class="campaignHint" data-i18n="campaign.hint">Сложность растёт с каждым уровнем. Босс — каждые 5 уровней.</div><button id="launch" class="primary" data-i18n="fight">В БОЙ</button></div>
 </div></section>
 
 <section id="helpScreen" class="screen"><div class="panel small premiumPanel">
@@ -53,9 +53,9 @@
 <section id="settings" class="screen"><div class="panel settingsPanel premiumPanel">
   <div class="headRow"><div><div class="eyebrow" data-i18n="settings.kicker">НАСТРОЙКИ</div><h2 data-i18n="settings.title">Комфорт игры</h2></div><button id="settingsBack" class="ghost" data-i18n="back">← НАЗАД</button></div>
   <div class="settingsList">
-    <div class="settingRow languageRow"><div class="settingCopy"><b data-i18n="language">Язык</b><span data-i18n="language.desc">Выберите язык интерфейса.</span></div><div class="languageSwitch"><button type="button" data-lang="ru">Русский</button><button type="button" data-lang="en">English</button></div></div>\n    <div class="settingRow"><div class="settingCopy"><b data-i18n="volume">Громкость</b><span data-i18n="volume.desc">Общая громкость звуков игры.</span></div><div class="rangeWrap"><input id="volumeRange" type="range" min="0" max="100" value="65"><output id="volumeValue">65%</output></div></div>
+    <div class="settingRow languageRow"><div class="settingCopy"><b data-i18n="language">Язык</b><span data-i18n="language.desc">Выберите язык интерфейса.</span></div><div class="languageSwitch"><button type="button" data-lang="ru">Русский</button><button type="button" data-lang="en">English</button></div></div>
+    <div class="settingRow"><div class="settingCopy"><b data-i18n="volume">Громкость</b><span data-i18n="volume.desc">Общая громкость звуков игры.</span></div><div class="rangeWrap"><input id="volumeRange" type="range" min="0" max="100" value="65"><output id="volumeValue">65%</output></div></div>
     <div class="settingRow"><div class="settingCopy"><b data-i18n="sfx">Звуковые эффекты</b><span data-i18n="sfx.desc">Выстрелы, взрывы и сигналы интерфейса.</span></div><button id="sfxToggle" class="toggle active">ВКЛЮЧЕНО</button></div>
-    <div class="settingRow"><div class="settingCopy"><b data-i18n="shake">Тряска экрана</b><span data-i18n="shake.desc">По умолчанию выключена для комфортной игры.</span></div><button id="shakeToggle" class="toggle">ВЫКЛЮЧЕНО</button></div>
     <div class="settingRow"><div class="settingCopy"><b data-i18n="autopause">Автопауза</b><span data-i18n="autopause.desc">Останавливает игру и звук при потере фокуса.</span></div><button id="autopauseToggle" class="toggle active">ВКЛЮЧЕНО</button></div>
   </div>
 </div></section>
