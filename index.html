@@ -1,30 +1,41 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <meta name="theme-color" content="#07141b" />
-  <title>Танки: Защити Базу!</title>
-  <style>
-    *{box-sizing:border-box}
-    html,body{margin:0;width:100%;height:100%;background:#07141b;color:#fff;font-family:Inter,system-ui,Arial,sans-serif}
-    body{display:grid;place-items:center;overflow:hidden;background:
-      radial-gradient(circle at 50% 30%,#2f6573 0,#173541 34%,#08151c 72%,#04090d 100%)}
-    main{width:min(920px,92vw);text-align:center}
-    .badge{display:inline-block;padding:8px 12px;border:1px solid #ffffff22;border-radius:999px;background:#06111699;color:#bcd0d6;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
-    h1{font-size:clamp(48px,9vw,100px);line-height:.84;margin:26px 0 16px;letter-spacing:-.06em}
-    h1 span{color:#dcff72;text-shadow:0 0 35px #c9ff5733}
-    p{max-width:650px;margin:0 auto 26px;color:#b4c6cb;font-size:18px;line-height:1.55}
-    .status{display:inline-flex;gap:10px;align-items:center;padding:12px 16px;border-radius:16px;background:#0b1d24cc;border:1px solid #ffffff14}
-    .dot{width:10px;height:10px;border-radius:50%;background:#baff62;box-shadow:0 0 18px #baff62}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#09151c">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Танки: Защити Базу!</title>
+<link rel="stylesheet" href="./src/styles.css">
+<script src="./src/platform.js" defer></script>
+<script src="./src/game.js" defer></script>
 </head>
 <body>
-  <main>
-    <div class="badge">Production build · GitHub connected</div>
-    <h1>ТАНКИ:<br><span>ЗАЩИТИ БАЗУ!</span></h1>
-    <p>Проект переведён в production-репозиторий. Следующий коммит — перенос игрового ядра, меню, уровней и интеграции Яндекс Игр.</p>
-    <div class="status"><span class="dot"></span><strong>Репозиторий подключён</strong></div>
-  </main>
-</body>
-</html>
+<div id="app"><div id="stage"><canvas id="game" width="1280" height="720"></canvas>
+
+<section id="menu" class="screen active"><div class="panel hero">
+  <div class="eyebrow">ARCADE TANK DEFENSE</div>
+  <h1>ТАНКИ:<br><span>ЗАЩИТИ БАЗУ!</span></h1>
+  <p>Разноси волны врагов, выбирай усиления и не дай им уничтожить твою базу.</p>
+  <div class="menuBtns"><button id="play" class="primary">ИГРАТЬ</button><button id="quick" class="secondary">БЫСТРЫЙ СТАРТ</button><button id="help" class="ghost">КАК ИГРАТЬ</button></div>
+</div></section>
+
+<section id="levels" class="screen"><div class="panel wide">
+ <div class="headRow"><div><div class="eyebrow">КАРТА БОЯ</div><h2>Выбери сектор</h2></div><button id="back" class="ghost">← Меню</button></div>
+ <div id="levelGrid" class="levelGrid"></div>
+ <div class="difficulty"><div><b>Сложность</b><span>Начни с лёгкой — она рассчитана на первый заход.</span></div><div class="diffs"><button data-diff="easy" class="chip active">Легко</button><button data-diff="normal" class="chip">Норма</button><button data-diff="hard" class="chip">Сложно</button></div><button id="launch" class="primary">В БОЙ</button></div>
+</div></section>
+
+<section id="helpScreen" class="screen"><div class="panel small"><div class="eyebrow">КАК ИГРАТЬ</div><h2>Всё просто</h2><div class="helpGrid"><div><b>WASD / стрелки</b><span>движение</span></div><div><b>Мышь / касание</b><span>прицел</span></div><div><b>ЛКМ / Space</b><span>огонь</span></div></div><p>Уничтожай врагов раньше, чем они доберутся до базы. После каждой волны выбери одно из трёх усилений.</p><button id="helpBack" class="primary">ПОНЯТНО</button></div></section>
+
+<section id="pause" class="screen"><div class="panel small center"><div class="eyebrow">ПАУЗА</div><h2>Бой остановлен</h2><div class="menuBtns"><button id="resume" class="primary">ПРОДОЛЖИТЬ</button><button id="restart" class="secondary">ЗАНОВО</button><button id="quit" class="ghost">В МЕНЮ</button></div></div></section>
+
+<section id="upgrade" class="screen"><div class="panel wide center"><div class="eyebrow">УСИЛЕНИЕ</div><h2>Выбери одно</h2><p class="muted">Каждая волна делает твой танк сильнее.</p><div id="upgradeGrid" class="upgradeGrid"></div></div></section>
+
+<section id="result" class="screen"><div class="panel small center"><div class="eyebrow">РЕЗУЛЬТАТ</div><h2 id="resultTitle">ПОБЕДА!</h2><p id="resultText" class="muted"></p><div class="stats"><div><b id="rScore">0</b><span>очки</span></div><div><b id="rWave">0</b><span>волна</span></div><div><b id="rBase">0%</b><span>база</span></div></div><div class="menuBtns"><button id="next" class="primary">СЛЕДУЮЩИЙ УРОВЕНЬ</button><button id="retry" class="secondary">ЕЩЁ РАЗ</button><button id="resultMenu" class="ghost">К КАРТЕ</button></div></div></section>
+
+<div id="hud"><div class="leftHud"><div class="hudBox"><span>БАЗА</span><b><i id="baseHp">100</i>%</b><div class="bar"><u id="baseBar"></u></div></div><div class="hudBox"><span>ТАНК</span><b><i id="tankHp">100</i>%</b><div class="bar blue"><u id="tankBar"></u></div></div></div><div id="wavePill">ВОЛНА <b id="wave">1</b>/<b id="maxWave">3</b></div><div class="rightHud"><div class="hudBox right"><span>ОЧКИ</span><b id="score">0</b></div><div class="hudBox right"><span>ЦЕЛЕЙ</span><b id="remain">0</b></div></div><div id="toast"></div><button id="pauseBtn">Ⅱ</button></div>
+
+<div id="mobile"><div class="pad"><button data-k="ArrowUp">▲</button><button data-k="ArrowLeft">◀</button><button data-k="ArrowRight">▶</button><button data-k="ArrowDown">▼</button></div><button id="fire">ОГОНЬ</button></div>
+</div></div>
+</body></html>
