@@ -1,0 +1,9 @@
+{
+  "name": "tanki-zashiti-bazu",
+  "version": "0.6.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:yandex": "node scripts/build-yandex.mjs"
+  }
+}
