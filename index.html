@@ -13,11 +13,16 @@
 <body>
 <div id="app"><div id="stage"><canvas id="game" width="1280" height="720"></canvas>
 
-<section id="menu" class="screen active"><div class="panel hero">
-  <div class="eyebrow">ARCADE TANK DEFENSE</div>
+<section id="menu" class="screen active"><div class="panel hero premiumHero">
+  <div class="eyebrow">ARCADE DEFENSE</div>
   <h1>ТАНКИ:<br><span>ЗАЩИТИ БАЗУ!</span></h1>
-  <p>Разноси волны врагов, выбирай усиления и не дай им уничтожить твою базу.</p>
-  <div class="menuBtns"><button id="play" class="primary">ИГРАТЬ</button><button id="quick" class="secondary">БЫСТРЫЙ СТАРТ</button><button id="help" class="ghost">КАК ИГРАТЬ</button></div>
+  <p>Короткие волны, понятный бой и усиления после каждой атаки. Никакой перегруженности — сразу в игру.</p>
+  <div class="menuBtns menuGrid">
+    <button id="play" class="primary">ИГРАТЬ</button>
+    <button id="quick" class="secondary">БЫСТРЫЙ СТАРТ</button>
+    <button id="settingsBtn" class="ghost">НАСТРОЙКИ</button>
+    <button id="help" class="ghost">КАК ИГРАТЬ</button>
+  </div>
 </div></section>
 
 <section id="levels" class="screen"><div class="panel wide">
@@ -28,9 +33,20 @@
 
 <section id="helpScreen" class="screen"><div class="panel small"><div class="eyebrow">КАК ИГРАТЬ</div><h2>Всё просто</h2><div class="helpGrid"><div><b>WASD / стрелки</b><span>движение</span></div><div><b>Мышь / касание</b><span>прицел</span></div><div><b>ЛКМ / Space</b><span>огонь</span></div></div><p>Уничтожай врагов раньше, чем они доберутся до базы. После каждой волны выбери одно из трёх усилений.</p><button id="helpBack" class="primary">ПОНЯТНО</button></div></section>
 
-<section id="pause" class="screen"><div class="panel small center"><div class="eyebrow">ПАУЗА</div><h2>Бой остановлен</h2><div class="menuBtns"><button id="resume" class="primary">ПРОДОЛЖИТЬ</button><button id="restart" class="secondary">ЗАНОВО</button><button id="quit" class="ghost">В МЕНЮ</button></div></div></section>
+<section id="pause" class="screen"><div class="panel small center"><div class="eyebrow">ПАУЗА</div><h2>Бой остановлен</h2><div class="menuBtns"><button id="resume" class="primary">ПРОДОЛЖИТЬ</button><button id="pauseSettings" class="secondary">НАСТРОЙКИ</button><button id="restart" class="secondary">ЗАНОВО</button><button id="quit" class="ghost">В МЕНЮ</button></div></div></section>
 
-<section id="upgrade" class="screen"><div class="panel wide center"><div class="eyebrow">УСИЛЕНИЕ</div><h2>Выбери одно</h2><p class="muted">Каждая волна делает твой танк сильнее.</p><div id="upgradeGrid" class="upgradeGrid"></div></div></section>
+<section id="settings" class="screen"><div class="panel settingsPanel">
+  <div class="headRow"><div><div class="eyebrow">НАСТРОЙКИ</div><h2>Комфорт игры</h2></div><button id="settingsBack" class="ghost">← НАЗАД</button></div>
+  <div class="settingsList">
+    <div class="settingRow"><div><b>Громкость</b><span>Общая громкость звуков игры.</span></div><input id="volumeRange" type="range" min="0" max="100" value="65"></div>
+    <div class="settingRow"><div><b>Звуковые эффекты</b><span>Выстрелы, взрывы и сигналы интерфейса.</span></div><button id="sfxToggle" class="toggle active">ВКЛЮЧЕНО</button></div>
+    <div class="settingRow"><div><b>Тряска экрана</b><span>По умолчанию выключена. Можно включить вручную.</span></div><button id="shakeToggle" class="toggle">ВЫКЛЮЧЕНО</button></div>
+    <div class="settingRow"><div><b>Автопауза</b><span>Останавливает бой при потере фокуса вкладки.</span></div><button id="autopauseToggle" class="toggle active">ВКЛЮЧЕНО</button></div>
+  </div>
+  <p class="settingsNote">Настройки сохраняются на устройстве. Звук останавливается при потере фокуса.</p>
+</div></section>
+
+<section id="upgrade" class="screen"><div class="panel wide center"><div class="eyebrow">УСИЛЕНИЕ</div><h2>Выбери одно улучшение</h2><p class="muted">Чистые игровые карточки без эмодзи — только понятные параметры.</p><div id="upgradeGrid" class="upgradeGrid"></div></div></section>
 
 <section id="result" class="screen"><div class="panel small center"><div class="eyebrow">РЕЗУЛЬТАТ</div><h2 id="resultTitle">ПОБЕДА!</h2><p id="resultText" class="muted"></p><div class="stats"><div><b id="rScore">0</b><span>очки</span></div><div><b id="rWave">0</b><span>волна</span></div><div><b id="rBase">0%</b><span>база</span></div></div><div class="menuBtns"><button id="next" class="primary">СЛЕДУЮЩИЙ УРОВЕНЬ</button><button id="retry" class="secondary">ЕЩЁ РАЗ</button><button id="resultMenu" class="ghost">К КАРТЕ</button></div></div></section>
 
