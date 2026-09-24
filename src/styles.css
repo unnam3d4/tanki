@@ -15,3 +15,17 @@
 .upgradeCard em{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:14px;background:linear-gradient(180deg,#2e4d5d,#1b303a);font-style:normal;font-size:13px;font-weight:1000;letter-spacing:.1em;color:#eff9ff}
 #toast{font-size:15px;padding:10px 16px;border-radius:999px;background:#071217d9;border:1px solid #ffffff12}
 @media(max-width:620px){.menuGrid{grid-template-columns:1fr}.settingRow{align-items:flex-start}.settingRow input[type=range]{width:100%}}
+
+/* Visual Combat Pass v1 */
+.hudBox{min-width:124px;padding:10px 12px;border-radius:16px;background:linear-gradient(180deg,#0b1a20e8,#071116d9);border:1px solid #ffffff14;box-shadow:0 10px 26px #0004,0 1px 0 #ffffff08 inset}
+.hudBox span{font-size:9px;letter-spacing:.17em;color:#9db0b6}
+.hudBox b{font-size:18px;letter-spacing:-.02em}
+.bar{height:7px;background:#13242a;border:1px solid #ffffff0b}
+#wavePill{padding:10px 16px;border-radius:14px;background:linear-gradient(180deg,#0c1b22e8,#071117db);box-shadow:0 10px 26px #0004,0 1px 0 #ffffff08 inset;font-weight:900}
+#comboPill{top:67px;background:linear-gradient(180deg,#cf7b35e8,#9b4829e8);border-color:#ffc88366}
+#toast{top:19%;box-shadow:0 10px 30px #0004;letter-spacing:.07em;text-transform:uppercase}
+.upgradeCard{background:linear-gradient(155deg,#1c3540,#0e2027 72%);border-color:#ffffff14}
+.upgradeCard em{box-shadow:0 0 0 1px #ffffff0c inset}
+.levelCard{background:radial-gradient(circle at 85% 10%,#ffffff0b,transparent 36%),linear-gradient(160deg,#ffffff0d,#ffffff03)}
+.levelCard.selected{border-color:#dfff7766;box-shadow:0 0 0 2px #dfff774f inset,0 14px 30px #0004}
+@media(hover:none),(pointer:coarse),(max-width:900px){.hudBox{min-width:104px;padding:8px 9px}.hudBox b{font-size:15px}#wavePill{font-size:11px;padding:8px 11px}}
