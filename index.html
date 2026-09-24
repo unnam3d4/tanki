@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <title>Танки: Защити Базу!</title>
 <link rel="stylesheet" href="./src/styles.css">
-<script src="./src/platform.js" defer></script>
+<script src="./src/platform.js" defer></script>\n<script src="./src/audio.js" defer></script>
 <script src="./src/game.js" defer></script>
 </head>
 <body>
@@ -34,7 +34,7 @@
 
 <section id="result" class="screen"><div class="panel small center"><div class="eyebrow">РЕЗУЛЬТАТ</div><h2 id="resultTitle">ПОБЕДА!</h2><p id="resultText" class="muted"></p><div class="stats"><div><b id="rScore">0</b><span>очки</span></div><div><b id="rWave">0</b><span>волна</span></div><div><b id="rBase">0%</b><span>база</span></div></div><div class="menuBtns"><button id="next" class="primary">СЛЕДУЮЩИЙ УРОВЕНЬ</button><button id="retry" class="secondary">ЕЩЁ РАЗ</button><button id="resultMenu" class="ghost">К КАРТЕ</button></div></div></section>
 
-<div id="hud"><div class="leftHud"><div class="hudBox"><span>БАЗА</span><b><i id="baseHp">100</i>%</b><div class="bar"><u id="baseBar"></u></div></div><div class="hudBox"><span>ТАНК</span><b><i id="tankHp">100</i>%</b><div class="bar blue"><u id="tankBar"></u></div></div></div><div id="wavePill">ВОЛНА <b id="wave">1</b>/<b id="maxWave">3</b></div><div class="rightHud"><div class="hudBox right"><span>ОЧКИ</span><b id="score">0</b></div><div class="hudBox right"><span>ЦЕЛЕЙ</span><b id="remain">0</b></div></div><div id="toast"></div><button id="pauseBtn">Ⅱ</button></div>
+<div id="hud"><div class="leftHud"><div class="hudBox"><span>БАЗА</span><b><i id="baseHp">100</i>%</b><div class="bar"><u id="baseBar"></u></div></div><div class="hudBox"><span>ТАНК</span><b><i id="tankHp">100</i>%</b><div class="bar blue"><u id="tankBar"></u></div></div></div><div id="wavePill">ВОЛНА <b id="wave">1</b>/<b id="maxWave">3</b></div><div class="rightHud"><div class="hudBox right"><span>ОЧКИ</span><b id="score">0</b></div><div class="hudBox right"><span>ЦЕЛЕЙ</span><b id="remain">0</b></div></div><div id="toast"></div><div id="comboPill"></div><button id="pauseBtn">Ⅱ</button></div>
 
 <div id="mobile"><div class="pad"><button data-k="ArrowUp">▲</button><button data-k="ArrowLeft">◀</button><button data-k="ArrowRight">▶</button><button data-k="ArrowDown">▼</button></div><button id="fire">ОГОНЬ</button></div>
 </div></div>
